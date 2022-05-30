@@ -15,24 +15,7 @@ import { actionTypes } from "./reducer";
 
 function Login() {
   const [{}, dispatch] = useStateValue();
-  useEffect(() => {
-    dispatch(checkLoginStatus());
-  }, []);
 
-  const checkLoginStatus = () => {
-    return (dispatch) => {
-      const token = localStorage.getItem("token"); //<==
-
-      if (!token) dispatch(logout());
-    };
-  };
-  const logout = () => {
-    localStorage.removeItem("token"); //<==
-
-    return {
-      type: actionTypes.LOGOUT,
-    };
-  };
   const signIn = () => {
     auth
       .signInWithPopup(provider)
@@ -55,7 +38,7 @@ function Login() {
           alt=""
         />
         <div className="login__text">
-          <h1>Sign in to WhatsApp</h1>
+          <h1>Sign in to WhatsChat</h1>
         </div>
         <Button type="submit" onClick={signIn}>
           Sign In With Google
