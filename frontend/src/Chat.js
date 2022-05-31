@@ -32,8 +32,8 @@ function Chat({ messages }) {
         <Avatar />
 
         <div className="chat__headerInfo">
-          <h3>Room Name</h3>
-          <p>Last seen at...</p>
+          <h3>Dance Room</h3>
+          <p>Last Seen at {messages[messages.length - 1].timestamp}</p>
         </div>
 
         <div className="chat__headerRight">

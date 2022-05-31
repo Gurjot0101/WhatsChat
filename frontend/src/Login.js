@@ -33,10 +33,9 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1024px-WhatsApp.svg.png?20220228223904"
-          alt=""
-        />
+        <a>
+          <img src="https://img.icons8.com/dusk/344/weixing.png" alt="" />
+        </a>
         <div className="login__text">
           <h1>Sign in to WhatsChat</h1>
         </div>

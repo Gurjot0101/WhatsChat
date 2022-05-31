@@ -8,7 +8,7 @@ import { SearchOutlined } from "@material-ui/icons";
 import SidebarChat from "./SidebarChat";
 import { useStateValue } from "./StateProvider";
 
-function Sidebar() {
+function Sidebar(props) {
   const [{ user }, dispatch] = useStateValue();
 
   return (
@@ -36,9 +36,12 @@ function Sidebar() {
       </div>
 
       <div className="sidebar__chats">
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
+        <SidebarChat
+          roomName="Dance Room"
+          lastMessage={props.messages[props.messages.length - 1]}
+        />
+        <SidebarChat roomName="Dev Room" lastMessage="This is last Message" />
+        <SidebarChat roomName="Epic Room" lastMessage="This is last Message" />
       </div>
     </div>
   );
