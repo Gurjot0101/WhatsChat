@@ -2,13 +2,6 @@ import React, { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import "./Login.css";
 import { auth, provider } from "./firebase";
-import {
-  getAuth,
-  setPersistence,
-  signInWithRedirect,
-  inMemoryPersistence,
-  GoogleAuthProvider,
-} from "firebase/auth";
 
 import { useStateValue } from "./StateProvider";
 import { actionTypes } from "./reducer";
@@ -26,7 +19,7 @@ function Login() {
           type: actionTypes.SET_USER,
           user: result.user,
         });
-        localStorage.setItem("token", result.credential.idToken); //<==
+        // localStorage.setItem("token", result.credential.idToken); //<==
       })
       .catch((error) => alert(error.message));
   };

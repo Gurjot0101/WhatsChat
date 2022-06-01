@@ -18,7 +18,7 @@
   min-width: 10vw;
 }
 
-.sidebar__headerRight > .MuiSvgIcon-root {
+.sidebar__headerRight>.MuiSvgIcon-root {
   margin-right: 2vw;
   font-size: 24px !important;
 }
@@ -40,12 +40,12 @@
   border-radius: 20px;
 }
 
-.sidebar__searchContainer > .MuiSvgIcon-root {
+.sidebar__searchContainer>.MuiSvgIcon-root {
   color: gray;
   padding: 10px;
 }
 
-.sidebar__searchContainer > input {
+.sidebar__searchContainer>input {
   border: none;
   margin-left: 10px;
   outline-width: 0;

@@ -3,7 +3,6 @@ import React from "react";
 import "./SidebarChat.css";
 
 function SidebarChat(props) {
-  console.log(props);
   return (
     <div className="sidebarChat">
       <Avatar />

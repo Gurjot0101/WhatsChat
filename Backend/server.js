@@ -10,9 +10,9 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 const pusher = new Pusher({
-  appId: "1414254",
-  key: "d70b311cec9d09ede019",
-  secret: "ec421c281739c25bf7d2",
+  appId: "1414359",
+  key: "fe77b05322ba96a15311",
+  secret: "32fce312e499afdb63a3",
   cluster: "ap2",
   useTLS: true,
 });
@@ -21,7 +21,6 @@ const pusher = new Pusher({
 app.use(express.json());
 
 app.use(cors());
-
 
 // DB config
 const connection_url =
