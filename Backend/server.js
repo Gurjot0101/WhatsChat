@@ -24,7 +24,7 @@ app.use(cors());
 
 // DB config
 const connection_url =
-  "mongodb+srv://admin:umCqULeM96hoE4OT@cluster0.3rfac.mongodb.net/whatsappdb?retryWrites=true&w=majority";
+  "mongodb+srv://whatschat:kEa8khOtBsuEjdDq@mongo-whatschat.uw2h6qk.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(connection_url, {
@@ -63,8 +63,11 @@ db.once("open", () => {
 // ????
 
 // api routes
-app.get("/", (req, res) => res.status(200).send("hello world"));
 
+app.get("/", async (req, res) => {
+  await Messages.deleteMany({});
+  res.send("Messages deleted");
+});
 app.get("/api/v1/messages/sync", (req, res) => {
   Messages.find((err, data) => {
     if (err) {
