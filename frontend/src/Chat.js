@@ -14,7 +14,7 @@ import { useStateValue } from "./StateProvider";
 function Chat({ messages }) {
   const [input, setInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
-
+  const lastSeen = messages[messages.length - 1].timestamp || "today";
   const sendMessage = async (e) => {
     e.preventDefault();
     await axios.post("/api/v1/messages/new", {
@@ -33,7 +33,7 @@ function Chat({ messages }) {
 
         <div className="chat__headerInfo">
           <h3>Dance Room</h3>
-          <p>Last Seen at {messages[messages.length - 1].timestamp}</p>
+          <p>Last Seen at {lastSeen}</p>
         </div>
 
         <div className="chat__headerRight">
