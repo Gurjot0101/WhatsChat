@@ -21,7 +21,7 @@ function App() {
       cluster: "ap2",
     });
 
-    const channel = pusher.subscribe("messages");
+    const channel = pusher.subscribe("whatschat");
     channel.bind("inserted", (newMessage) => {
       setMessages([...messages, newMessage]);
     });
