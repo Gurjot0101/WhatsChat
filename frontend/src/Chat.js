@@ -57,8 +57,11 @@ function Chat({ messages }) {
               user?.uid === message.uid && "chat__receiver"
             }`}
           >
-            <span className="chat__name">{message.name}</span>
-            {message.message}
+            <div className="chat__name">{message.name}</div>
+            
+            <div className="chat__msg">
+              {message.message}
+            </div>
             <span className="chat__timestamp">{message.timestamp}</span>
           </p>
         ))}
