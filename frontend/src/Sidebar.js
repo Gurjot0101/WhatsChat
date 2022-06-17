@@ -4,7 +4,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/Chat";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { SearchOutlined } from "@material-ui/icons";
+import { SearchOutlined, Add } from "@material-ui/icons";
 import SidebarChat from "./SidebarChat";
 import { useStateValue } from "./StateProvider";
 
@@ -14,24 +14,29 @@ function Sidebar(props) {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src={user?.photoURL} />
-        <div className="sidebar__headerRight">
-          <IconButton>
-            <DonutLargeIcon />
-          </IconButton>
-          <IconButton>
-            <ChatIcon />
-          </IconButton>
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        </div>
+        <div className="sidebar__headerRight"></div>
       </div>
 
       <div className="sidebar__search">
         <div className="sidebar__searchContainer">
           <SearchOutlined />
-          <input placeholder="Search or start a new chat" type="text" />
+          <input placeholder="Enter for search" type="text" />
+        </div>
+        <div className="collection">
+          <div className="collection__number">147</div>
+          <img
+            height={17}
+            src="https://cdn.iconscout.com/icon/free/png-256/save-3244517-2701888.png"
+          ></img>
+        </div>
+      </div>
+      <div className="sorting__bar">
+        <div>Sort By:</div>
+        <div className="add__contact">
+          <div className="add__contact__text">Add New</div>
+          <div className="add__contact__button">
+            <Add />
+          </div>
         </div>
       </div>
 

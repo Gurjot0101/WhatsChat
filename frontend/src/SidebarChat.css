@@ -1,8 +1,17 @@
 .sidebarChat {
   display: flex;
-  padding: 20px;
+  flex-direction: column;
+}
+
+
+.sidebarChat__head {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  flex-direction: row;
   cursor: pointer;
   border-bottom: 1px solid #f6f6f6;
+
 }
 
 .sidebarChat:hover {
@@ -11,9 +20,14 @@
 
 .sidebarChat__info {
   margin-left: 15px;
+
+}
+
+.sidebarChat__info>p {
+  font-size: 7px;
 }
 
 .sidebarChat__info>h2 {
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 8px;
 }

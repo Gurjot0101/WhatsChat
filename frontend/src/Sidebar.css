@@ -1,7 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  flex: 0.35;
+  flex: 0.45;
 }
 
 .sidebar__header {
@@ -56,4 +56,47 @@
   flex: 1;
   background-color: white;
   overflow: scroll;
+}
+
+.collection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.collection__number {
+  font-size: 15px;
+}
+
+.sorting__bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add__contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.add__contact__text {
+  font-size: 15px;
+}
+
+.add__contact__button {
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  background-color: #63CAAB;
+}
+
+.add__contact__button>.MuiSvgIcon-root {
+  color: white;
+  font-size: 20px;
+  padding: 3px;
 }
