@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
+import Leftbar from "./LeftBar";
 import Pusher from "pusher-js";
 import axios from "./axios";
 import Login from "./Login";
@@ -57,6 +58,7 @@ function App() {
         <Login />
       ) : (
         <div className="app_body">
+          <Leftbar />
           <Sidebar messages={messages} />
           <Chat messages={messages} />
         </div>
