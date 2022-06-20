@@ -13,9 +13,6 @@ function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <div className="sidebar__header">
-        <div className="sidebar__headerRight"></div>
-      </div>
 
       <div className="sidebar__search">
         <div className="sidebar__searchContainer">
@@ -23,7 +20,7 @@ function Sidebar(props) {
           <input placeholder="Enter for search" type="text" />
         </div>
         <div className="collection">
-          <div className="collection__number">147</div>
+          <div className="collection__number">14</div>
           <img
             height={17}
             src="https://cdn.iconscout.com/icon/free/png-256/save-3244517-2701888.png"
@@ -31,7 +28,9 @@ function Sidebar(props) {
         </div>
       </div>
       <div className="sorting__bar">
-        <div>Sort By:</div>
+        <div>
+          Sort By:
+        </div>
         <div className="add__contact">
           <div className="add__contact__text">Add New</div>
           <div className="add__contact__button">
