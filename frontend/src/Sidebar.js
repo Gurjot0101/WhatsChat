@@ -41,10 +41,7 @@ function Sidebar(props) {
       </div>
 
       <div className="sidebar__chats">
-        <SidebarChat
-          roomName="Dance Room"
-          lastMessage={props.messages[props.messages.length - 1]}
-        />
+        <SidebarChat roomName="Dance Room" lastMessage="last message" />
         <SidebarChat roomName="Dev Room" lastMessage="This is last Message" />
         <SidebarChat roomName="Epic Room" lastMessage="This is last Message" />
       </div>

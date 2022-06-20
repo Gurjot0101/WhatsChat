@@ -6,9 +6,28 @@ import Pusher from "pusher-js";
 import axios from "./axios";
 import Login from "./Login";
 import { useStateValue } from "./StateProvider";
+import { auth } from "./firebase";
+import { actionTypes } from "./reducer";
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+      console.log(user);
+      let isMounted = true;
+      if (user && isMounted) {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: user,
+        });
+        console.log("User Logged In");
+      }
+      console.log("auth change");
+    });
+  }, [user]);
 
   useEffect(() => {
     axios.get("/api/v1/messages/sync").then((response) => {
@@ -31,8 +50,6 @@ function App() {
       channel.unsubscribe();
     };
   }, [messages]);
-
-  const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="app">
