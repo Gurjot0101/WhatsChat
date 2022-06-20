@@ -64,7 +64,7 @@ function Chat({ messages }) {
             </div>
             <span className="chat__timestamp">{message.timestamp}</span>
           </p>
-        ))}
+        )).reverse()}
       </div>
 
       <div className="chat__footer">
