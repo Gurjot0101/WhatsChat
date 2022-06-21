@@ -1,14 +1,16 @@
 .defaultScreen {
-    background-color: #f8f8f8;
+    background-color: #1e1e1e;
     height: 100%;
     width: 100%;
-
     display: flex;
     flex-direction: column;
     flex-shrink: 0.70;
     flex-grow: 0;
     align-items: center;
+    text-align: center;
     justify-content: center;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .defaultScreen__img {
@@ -31,14 +33,14 @@
 }
 
 .defaultScreen__heading__title {
-    color: #41525d;
+    color: white;
     font-size: 4vh;
-    margin-right: 2vw;
+    margin-right: 1vw;
 }
 
 .defaultScreen__heading__text {
-    background-color: #e6e6e6;
-    color: #667781;
+    background-color: #00c4a3;
+    color: rgb(0, 0, 0);
     padding: 5px 8px;
     border-radius: 999px;
     font-size: 11px;
@@ -49,15 +51,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 2vh;
-    color: #667781;
+    margin-top: 3vh;
+    color: white;
     font-size: 14px;
 }
 
 .defaultScreen__body__info {
     display: flex;
     align-items: center;
-    margin-top: 6vh;
+    margin-top: 1vh;
 }
 
 .defaultScreen__body__info>.MuiSvgIcon-root {
@@ -65,6 +67,10 @@
 }
 
 .defaultScreen__body__info>span {
-    color: #027eb5;
+    color: #00c4a3;
     margin-left: 0.4vw;
+}
+
+.defaultScreen__body__info>span {
+    cursor: pointer;
 }
