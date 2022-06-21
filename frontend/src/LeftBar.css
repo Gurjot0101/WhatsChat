@@ -11,10 +11,15 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    flex: 0.07;
 }
 
-.Dp:hover,
+.Setting {
+    color: #00c4a3;
+}
+
+.Dp,
 .Setting:hover {
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.3);
 }

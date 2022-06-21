@@ -12,19 +12,16 @@ function DefaultScreen() {
       />
       <div className="defaultScreen__text">
         <div className="defaultScreen__heading">
-          <div className="defaultScreen__heading__title">WhatsApp Web</div>
+          <div className="defaultScreen__heading__title">WhatsChat</div>
           <div className="defaultScreen__heading__text">New</div>
         </div>
         <div className="defaultScreen__body">
           <div>
-            Now send and receive messages without keeping your phone online.
-          </div>
-          <div>
-            Use WhatsApp on up to 4 linked devices and 1 phone at the same time.
+            Use WhatsChat on infinite linked devices at the same time.
           </div>
           <div className="defaultScreen__body__info">
             <Computer />
-            Make calls from desktop with WhatsApp for Mac.{" "}
+            Make calls from desktop with WhatsChat for Web.{" "}
             <span>Get it here</span>
           </div>
         </div>
