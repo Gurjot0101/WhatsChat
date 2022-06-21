@@ -7,26 +7,20 @@ function DefaultScreen() {
     <div className="defaultScreen">
       <img
         className="defaultScreen__img"
-        src="https://i.ibb.co/HHCw8r5/default-Screen.png"
+        src="https://img.icons8.com/dusk/344/weixing.png"
         alt="defaultScreenImg"
       />
       <div className="defaultScreen__text">
         <div className="defaultScreen__heading">
-          <div className="defaultScreen__heading__title">WhatsApp Web</div>
+          <div className="defaultScreen__heading__title">WhatsChat</div>
           <div className="defaultScreen__heading__text">New</div>
         </div>
         <div className="defaultScreen__body">
           <div>
-            Now send and receive messages without keeping your phone online.
+            Now you can make custom rooms and add invite friends to enjoy a fun
+            time together
           </div>
-          <div>
-            Use WhatsApp on up to 4 linked devices and 1 phone at the same time.
-          </div>
-          <div className="defaultScreen__body__info">
-            <Computer />
-            Make calls from desktop with WhatsApp for Mac.{" "}
-            <span>Get it here</span>
-          </div>
+          <div>Tap on add new button to add new groups</div>
         </div>
       </div>
     </div>
