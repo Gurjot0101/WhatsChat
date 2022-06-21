@@ -15,7 +15,15 @@
 }
 
 .sidebarChat:hover {
-  background-color: #ebebeb;
+  background-color: #f5f6f6;
+}
+
+.sidebarChat__selected {
+  background-color: #f0f2f5;
+}
+
+.sidebarChat__selected:hover {
+  background-color: #f0f2f5;
 }
 
 .sidebarChat__info {
@@ -28,6 +36,6 @@
 }
 
 .sidebarChat__info>h2 {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 8px;
 }

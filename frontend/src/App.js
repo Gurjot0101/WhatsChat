@@ -9,30 +9,38 @@ import Login from "./Login";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import { actionTypes } from "./reducer";
+import DefaultScreen from "./DefaultScreen";
 
 function App() {
   const [messages, setMessages] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
-
+  const [chatrooms, setChatrooms] = useState([]);
+  const [{ user, selectedChatroom }, dispatch] = useStateValue();
+  const [login, setLogin] = useState(true);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log(user);
-      console.log(user);
       let isMounted = true;
       if (user && isMounted) {
         dispatch({
           type: actionTypes.SET_USER,
           user: user,
         });
+        setLogin(true);
         console.log("User Logged In");
+      } else {
+        dispatch({});
+        console.log("User Logged out");
+        setLogin(false);
       }
       console.log("auth change");
     });
-  }, [user]);
+  }, [user, dispatch, setLogin]);
 
   useEffect(() => {
     axios.get("/api/v1/messages/sync").then((response) => {
       setMessages(response.data);
+    });
+    axios.get("/api/v1/chatrooms/sync").then((response) => {
+      setChatrooms(response.data);
     });
   }, []);
 
@@ -41,7 +49,7 @@ function App() {
       cluster: "ap2",
     });
 
-    const channel = pusher.subscribe("whatschat");
+    const channel = pusher.subscribe("message");
     channel.bind("inserted", (newMessage) => {
       setMessages([...messages, newMessage]);
     });
@@ -52,15 +60,31 @@ function App() {
     };
   }, [messages]);
 
+  useEffect(() => {
+    const pusher = new Pusher("fe77b05322ba96a15311", {
+      cluster: "ap2",
+    });
+
+    const channel = pusher.subscribe("chatrooms");
+    channel.bind("inserted", (newChatroom) => {
+      setChatrooms([...chatrooms, newChatroom]);
+    });
+
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+  }, [chatrooms]);
+
   return (
     <div className="app">
-      {!user ? (
+      {!login ? (
         <Login />
       ) : (
         <div className="app_body">
           <Leftbar />
-          <Sidebar messages={messages} />
-          <Chat messages={messages} />
+          <Sidebar chatrooms={chatrooms} />
+          {selectedChatroom ? <Chat messages={messages} /> : <DefaultScreen />}
         </div>
       )}
     </div>

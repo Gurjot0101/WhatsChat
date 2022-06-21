@@ -1,9 +1,9 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    flex: 0.40;
     padding: 10px;
     border-right: 0.1px solid rgb(123, 123, 123);
+    flex-grow: 0.0;
 }
 
 .sidebar__header {
