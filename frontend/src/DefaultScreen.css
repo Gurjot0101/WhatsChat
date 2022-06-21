@@ -4,8 +4,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0.70;
-    flex-grow: 0;
+    flex: 0.6;
+    max-width: 60%;
+    min-width: 60%;
     align-items: center;
     text-align: center;
     justify-content: center;
