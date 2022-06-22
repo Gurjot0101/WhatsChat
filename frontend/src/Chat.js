@@ -6,6 +6,7 @@ import {
   SearchOutlined,
   ExitToApp,
   Close,
+  Send,
 } from "@material-ui/icons";
 //import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import React, { useEffect, useState, useRef } from "react";
@@ -88,6 +89,7 @@ function Chat({ messages }) {
       </div>
 
       <div className="chat__body">
+        {console.log(messages)}
         {messages.map((message, index) => (
           <p
             key={index}
@@ -126,6 +128,9 @@ function Chat({ messages }) {
           </button>
         </form>
         <Mic />
+        <IconButton onClick={sendMessage}>
+          <Send />
+        </IconButton>
       </div>
     </div>
   );
