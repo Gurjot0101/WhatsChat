@@ -2,6 +2,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessages.js";
+import Chatrooms from "./dbChatrooms.js";
 import Pusher from "pusher";
 import cors from "cors";
 
@@ -21,10 +22,14 @@ const pusher = new Pusher({
 app.use(express.json());
 
 app.use(cors());
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origins", "*");
+//   res.setHeader("Access-Control-Allow-Headers", "*");
+//   next();
+// });
 
 // DB config
-const connection_url =
-  "mongodb+srv://whatschat:kEa8khOtBsuEjdDq@mongo-whatschat.uw2h6qk.mongodb.net/?retryWrites=true&w=majority";
+const connection_url = process.env.MONGO_URL || "mongodb://127.0.0.1/whatschat";
 
 mongoose
   .connect(connection_url, {
@@ -40,34 +45,46 @@ const db = mongoose.connection;
 db.once("open", () => {
   console.log("Connecting DB");
 
-  const msgCollection = db.collection("messagecontents");
-  const changeStream = msgCollection.watch();
+  const msgCollection = db.collection("messages");
+  const chatroomCollection = db.collection("chatrooms");
 
-  changeStream.on("change", (change) => {
-    console.log("A change occurred", change);
+  const msgStream = msgCollection.watch();
+  const chatroomStream = chatroomCollection.watch();
+
+  msgStream.on("change", (change) => {
+    console.log("A change occurred in messages", change);
 
     if (change.operationType == "insert") {
       const messageDetails = change.fullDocument;
-      pusher.trigger("messages", "inserted", {
+      pusher.trigger("message", "inserted", {
         name: messageDetails.name,
         message: messageDetails.message,
         timestamp: messageDetails.timestamp,
         uid: messageDetails.uid,
+        chatroomId: messageDetails.chatroomId,
       });
     } else {
-      console.log("Error triggering Pusher");
+      console.log("Error triggering Pusher in messages");
+    }
+  });
+
+  chatroomStream.on("change", (change) => {
+    console.log("A change occurred in chatrooms", change);
+
+    if (change.operationType == "insert") {
+      const messageDetails = change.fullDocument;
+      pusher.trigger("chatrooms", "inserted", {
+        name: messageDetails.name,
+      });
+    } else {
+      console.log("Error triggering Pusher in chatrooms");
     }
   });
 });
 
-// ????
-
 // api routes
+app.get("/", (req, res) => res.status(200).send("Welcome to WhatsChat"));
 
-app.get("/", async (req, res) => {
-  await Messages.deleteMany({});
-  res.send("Messages deleted");
-});
 app.get("/api/v1/messages/sync", (req, res) => {
   Messages.find((err, data) => {
     if (err) {
@@ -86,6 +103,28 @@ app.post("/api/v1/messages/new", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(201).send(`new message created: \n ${data}`);
+    }
+  });
+});
+
+app.get("/api/v1/chatrooms/sync", (req, res) => {
+  Chatrooms.find((err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+});
+
+app.post("/api/v1/chatrooms/new", (req, res) => {
+  const chatroom = req.body;
+
+  Chatrooms.create(chatroom, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(`new chatroom created: \n ${data}`);
     }
   });
 });
