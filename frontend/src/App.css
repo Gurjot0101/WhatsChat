@@ -12,11 +12,11 @@
     margin-top: 0px;
     height: 90vh;
     width: 80vw;
-    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 7px 20px -6px rgba(0, 77, 59, 0.75);
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 4px;
 }
 
 
@@ -31,7 +31,7 @@
 
  ::-webkit-scrollbar-thumb {
     background: #00c4a3;
-    border-radius: 10px;
+    border-radius: 100px;
 }
 
 

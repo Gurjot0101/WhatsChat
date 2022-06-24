@@ -7,13 +7,13 @@
     flex: 0.6;
     max-width: 60%;
     min-width: 60%;
-
 }
 
 .chat__header {
     padding: 20px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid rgb(212, 212, 212);
 }
 
 .chat__headerInfo {
@@ -73,18 +73,19 @@
     top: -10px;
     font-weight: 800;
     font-size: medium;
-    padding: 10px;
+    padding: 5px;
 }
 
 .chat__msg {
+    padding: 7px 0px 7px 15px;
     min-width: 50%;
     max-width: 90%;
     border-radius: 20px;
-    padding: 5px;
     box-shadow: 0px 5px 5px 4px rgba(208, 207, 207, 0.313);
 }
 
 .chat__receiver {
+    padding: 7px 0px 7px 15px;
     margin-left: auto;
 }
 
@@ -95,7 +96,7 @@
     max-width: 90%;
     word-wrap: break-word;
     word-break: break-all;
-    background-color: rgb(0, 227, 189);
+    background-color: #01cfac;
     box-shadow: 1px 5px 8px 1px rgba(77, 77, 77, 0.313);
     color: white;
 }

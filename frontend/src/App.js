@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import "./Login.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
 import Leftbar from "./LeftBar";
