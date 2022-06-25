@@ -5,4 +5,5 @@ const chatroomsSchema = mongoose.Schema({
 });
 
 // Collection
-export default mongoose.model("chatrooms", chatroomsSchema);
+const ChatRooms = mongoose.model("chatrooms", chatroomsSchema);
+export default ChatRooms;

@@ -1,14 +1,35 @@
 // importing
 import express from "express";
 import mongoose from "mongoose";
-import Messages from "./dbMessages.js";
-import Chatrooms from "./dbChatrooms.js";
 import Pusher from "pusher";
 import cors from "cors";
+import swaggerJsDoc from "swagger-jsdoc";
+import swaggerUI from "swagger-ui-express";
+import messageRoutes from "./routes/messages.js";
+import chatroomRouter from "./routes/chatrooms.js";
 
 // app config
 const app = express();
 const port = process.env.PORT || 9000;
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "ChatRoom API",
+      description: "ChatRoom Endpoints",
+      contact: {
+        name: "Vivek",
+      },
+      servers: [
+        "http://localhost:4000",
+        "https://whatschat-mern.herokuapp.com/api-doc",
+      ],
+      version: "1.0.0",
+    },
+  },
+  apis: ["./src/routes/*.js"],
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 const pusher = new Pusher({
   appId: "1414359",
@@ -22,6 +43,9 @@ const pusher = new Pusher({
 app.use(express.json());
 
 app.use(cors());
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+app.use(messageRoutes);
+app.use(chatroomRouter);
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origins", "*");
 //   res.setHeader("Access-Control-Allow-Headers", "*");
@@ -84,50 +108,6 @@ db.once("open", () => {
 
 // api routes
 app.get("/", (req, res) => res.status(200).send("Welcome to WhatsChat"));
-
-app.get("/api/v1/messages/sync", (req, res) => {
-  Messages.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
-});
-
-app.post("/api/v1/messages/new", (req, res) => {
-  const dbMessage = req.body;
-
-  Messages.create(dbMessage, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(`new message created: \n ${data}`);
-    }
-  });
-});
-
-app.get("/api/v1/chatrooms/sync", (req, res) => {
-  Chatrooms.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
-});
-
-app.post("/api/v1/chatrooms/new", (req, res) => {
-  const chatroom = req.body;
-
-  Chatrooms.create(chatroom, (err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(`new chatroom created: \n ${data}`);
-    }
-  });
-});
 
 // listen
 app.listen(port, () => console.log(`Listening on localhost:${port}`));

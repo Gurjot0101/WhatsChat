@@ -9,4 +9,6 @@ const messagesSchema = mongoose.Schema({
 });
 
 // Collection
-export default mongoose.model("messages", messagesSchema);
+
+const Messages = mongoose.model("messages", messagesSchema);
+export default Messages;

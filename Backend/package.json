@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -14,6 +15,8 @@
     "express": "^4.18.1",
     "mongoose": "^6.3.4",
     "nodemon": "^2.0.16",
-    "pusher": "^5.1.0-beta"
+    "pusher": "^5.1.0-beta",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0"
   }
 }
