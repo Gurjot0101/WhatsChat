@@ -1,6 +1,5 @@
 import React from "react";
 import "./DefaultScreen.css";
-import Computer from "@material-ui/icons/Computer";
 
 function DefaultScreen() {
   return (

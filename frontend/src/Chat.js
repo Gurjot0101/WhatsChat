@@ -98,7 +98,6 @@ function Chat({ messages }) {
             } ${message.chatroomId !== selectedChatroom?._id && "chat__hide"}`}
           >
             <div className="chat__name">{message.name}</div>
-
             <div className="chat__msg">{message.message}</div>
             <span className="chat__timestamp">{message.timestamp}</span>
           </p>

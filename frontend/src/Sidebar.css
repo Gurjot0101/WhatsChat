@@ -4,6 +4,7 @@
     padding: 10px;
     border-right: 0.1px solid rgb(207, 207, 207);
     flex: 0.5;
+    overflow: hidden;
 }
 
 .sidebar__header {
@@ -45,7 +46,6 @@
 .sidebar__searchContainer>.MuiSvgIcon-root {
     border-radius: 30px;
     color: #3cc1ab;
-
     padding: 10px;
 }
 
@@ -69,13 +69,11 @@
 .sidebar__chats {
     flex: 1;
     background-color: white;
-    overflow: scroll;
+    overflow: auto;
 }
 
-.collection {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.sidebar__chats::-webkit-scrollbar {
+    display: none;
 }
 
 .collection__number {
@@ -84,6 +82,7 @@
 
 .sorting__bar {
     display: flex;
+    vertical-align: middle;
     flex-direction: row;
     justify-content: space-around;
 }
