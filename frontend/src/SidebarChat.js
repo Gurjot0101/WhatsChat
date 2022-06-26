@@ -46,13 +46,12 @@ function SidebarChat({ chatroom, addNewChat }) {
           <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
         </div>
         <div className="sidebarChat__info">
-          <h2>{chatroom?.name}</h2>
-          <p>{lastMessage.timestamp}</p>
+          <h2>{chatroom?.name.toUpperCase()}</h2>
+
         </div>
         <div></div>
       </div>
       <div className="sidebarChat__tail">
-        <p>{lastMessage.message}</p>
       </div>
     </div>
   ) : (
