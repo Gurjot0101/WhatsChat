@@ -42,7 +42,7 @@ function Sidebar({ chatrooms }) {
         </div>
       </div>
       <div className="sorting__bar">
-        <div>Sort By:</div>
+        <div>Sort By: Default</div>
         <div className="add__contact">
           <div className="add__contact__text">Add New</div>
           <div className="add__contact__button" onClick={() => createChat()}>
